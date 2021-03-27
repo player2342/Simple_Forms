@@ -1,7 +1,8 @@
-# Landing Page Template
+# Survey Template
 
-This HTML file is meant to be a starting file for beginner demos to follow. 
+This project is intended to enable fast and beautiful HTML + CSS only deployement to a server without need for a full blown server.
 
+# Font Preferences
 Here are my preferred font combos:
 - Playfair Display & Source Sans Pro
 - Oswald & Merriweather
