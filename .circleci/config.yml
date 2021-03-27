@@ -1,0 +1,18 @@
+jobs:
+  upload-to-firebase:
+    docker:
+      - image: 'circleci/node:10.16.0'
+    steps:
+      - checkout
+      - run: git clone https://github.com/player2342/LandingPageTest.git
+      - run: sudo npm install -g firebase-tools
+      #- run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN_ALEX --non-interactive
+      - run: sudo firebase deploy --token=$FIREBASE_TOKEN --only hosting
+   
+orbs:
+  node: circleci/node@3.0.0
+version: 2.1
+workflows:
+  deploy_website:
+    jobs:
+      - upload-to-firebase
