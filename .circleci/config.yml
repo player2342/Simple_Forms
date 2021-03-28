@@ -4,7 +4,7 @@ jobs:
       - image: 'circleci/node:10.16.0'
     steps:
       - checkout
-      - run: git clone https://github.com/player2342/LandingPageTest.git
+      - run: git clone https://github.com/player2342/Simple_Forms
       - run: sudo npm install -g firebase-tools
       #- run: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN_ALEX --non-interactive
       - run: sudo firebase deploy --token=$FIREBASE_TOKEN --only hosting
