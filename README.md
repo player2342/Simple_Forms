@@ -1,6 +1,6 @@
 # Survey Template
 
-This project is intended to enable fast and beautiful HTML + CSS only deployement to a server without need for a full blown server.
+This project is intended to enable fast and beautiful HTML + CSS only deployment to a server without need for a full blown server.
 
 # Font Preferences
 Here are my preferred font combos:
