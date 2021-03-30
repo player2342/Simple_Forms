@@ -1,11 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Thasadith" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <style>
+    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+    /*/basic reset/*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    html {
+        height: 100%;
+        background: rgb(249, 205, 72); /* fallback for old browsers */
+        background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
+    }
+    body {
+        font-family: montserrat, arial, verdana;
+        background: transparent;
+    }
     input[type=text] {
-      
+
       color: white;
       width: 100%;
       padding: 12px 20px;
@@ -27,16 +47,16 @@
       text-decoration: none;
       margin: 4px 2px;
       cursor: pointer;
-      border: 10px solid #f7d84e; 
+      border: 10px solid #f7d84e;
       border-radius: 4px;
-      
+
     }
 
     html, body, .viewport {
       width: 100%;
       height: 100%;
       margin: 0;
-      padding: 0; 
+      padding: 0;
     }
     body {
       font-family: 'Thasadith', sans-serif;
@@ -45,38 +65,229 @@
     h1{
       text-shadow: -4px 4px 10px #5a5a5a;
     }
-    .flex-box { 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      height: 100%;  
-    } 
-    .box { 
-      padding: 8px 10% 0px 10%; 
-      font-size: 25px; 
-      color: #8d8c8c; 
+    .flex-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .box {
+      padding: 8px 10% 0px 10%;
+      font-size: 25px;
+      color: #8d8c8c;
       /*border: 10px solid #f7d84e; */
       justify-content: center;
       align-items: center;
       text-align: center;
-    } 
+    }
+    .first-text{
+        margin-bottom: 16px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0px;
+    max-width: 100%;
+    font-weight: unset;
+    font-size: 24px;
+    line-height: 32px;
+    color: rgb(4, 4, 4);
+    text-shadow: none
+    }
+    .first-field{
+        width: 75%;
+        margin: 0% auto;
+    }
+    .icon__Boundary svg {
+     /*display: block; */
+    fill: rgb(228, 228, 228);
+    transition: fill 0.2s ease 0s;
+    }
+    button{
+    position: relative;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    transition-property: background-color, color, border-color, opacity, box-shadow;
+    transition-timing-function: ease-out;
+    outline: none;
+    border: 1px solid transparent;
+    margin: 0px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 3px 12px 0px;
+    padding: 8px 18px;
+    min-height: 48px;
+    background-color: rgb(37, 37, 37);
+    color: rgb(228, 228, 228);
+    border-radius: 4px;
+    }
+    label{
+        color: black;
+    font-size: 27px;
+    font-family: inherit;
+    text-align: left;
+    margin-bottom: 24px !important;
+    margin: -15px;
+    max-width: 100%;
+    font-weight: unset;
+    font-size: 24px;
+    line-height: 32px;
+    /*left: 11%;
+    /*position: absolute;*/
+    }
+    input{
+        /*position: relative;*/
+        /*left: -79%;*/
+        margin: 27px;
+        display: block;
+    width: 100%;
+    font-family: inherit;
+    color: rgb(0, 0, 0);
+    padding: 0px 0px 8px;
+    border: none;
+    outline: none;
+    border-radius: 0px;
+    appearance: none;
+    background-image: none;
+    background-position: initial;
+    background-size: initial;
+    background-repeat: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    transform: translateZ(0px);
+    font-size: 30px;
+    -webkit-font-smoothing: antialiased;
+    line-height: unset;
+    -webkit-text-fill-color: black;
+    animation: 1ms ease 0s 1 normal none running native-autofill-in;
+    transition: background-color 1e+08s ease 0s, box-shadow 0.1s ease-out 0s;
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px;
+    background-color: transparent !important;
+    }
+    input:focus{
+        box-shadow: rgb(0 0 0) 0px 2px;
+    }
   </style>
 </head>
 <body>
 
-  <div class="flex-box"> 
+  <div class="flex-box">
     <div class="box">
       <div>
-      <form id="form">   
-        <input type="text" id="Email" name="Email" placeholder="Email">
-        <input type="text" id="name" name="Name" placeholder="Name">
-        <input type="text" id="cell" name="Cell" placeholder="Cell">
-        <input type="submit" value="Submit">
+      <form id="form">
+
+        <fieldset class="second-field animate__animated animate__fadeInDown animate__fast">
+            <label><span>1 <span aria-hidden="true" class="icon__Boundary-sc-2r3yc0-0 bJDuDL"><svg height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg></span></span> What is your Email ?</label><br>
+            <input type="text" id="Email" name="Email" placeholder="Email" required="true">
+            <br>
+            <button type="button" class="startbtn emailbtn">
+                <span class="button_FlexWrapper">
+                    <span class="button__ButtonWrapper">
+                        <span class="text__TextWrapper">OK</span>
+                    </span>
+                    <span class="spacer__Spacer">
+                        <span class="button__IconWrapper">
+                            <span class="icon__Boundary">
+                                <svg  height="13" width="16">
+                                    <path d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"></path>
+                                </svg>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            </button>
+
+        </fieldset>
+        <fieldset class="third-field animate__animated animate__fadeInDown animate__fast">
+            <label><span>2 <span aria-hidden="true" class="icon__Boundary-sc-2r3yc0-0 bJDuDL"><svg height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg></span></span> What is your name?*</label><br>
+            <input type="text" id="name" name="Name" placeholder="Name" required="true">
+            <br>
+            <button type="button" class="startbtn namebtn">
+                <span class="button_FlexWrapper">
+                    <span class="button__ButtonWrapper">
+                        <span class="text__TextWrapper">OK</span>
+                    </span>
+                    <span class="spacer__Spacer">
+                        <span class="button__IconWrapper">
+                            <span class="icon__Boundary">
+                                <svg  height="13" width="16">
+                                    <path d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"></path>
+                                </svg>
+                            </span>
+                        </span>
+                    </span>
+                </span>
+            </button>
+        </fieldset>
+        <fieldset class="final-field animate__animated animate__fadeInDown animate__fast">
+            <label><span>3 <span aria-hidden="true" class="icon__Boundary-sc-2r3yc0-0 bJDuDL"><svg height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg></span></span> Where do you live ?</label><br>
+            <input type="text" id="cell" name="Cell" placeholder="Cell" required="true">
+        </fieldset>
+        <br>
+            <button type="Submit" class="startbtn submit">
+                <span class="button_FlexWrapper">
+                    <span class="button__ButtonWrapper">
+                        <span class="text__TextWrapper">Submit</span>
+                    </span>
+                </span>
+            </button>
       </form>
       </div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
+
+$(document).ready(function(){
+ 
+    $('.third-field').hide();
+    $('.final-field').hide();
+    $('.emailbtn').hide();
+    $('.namebtn').hide();
+    $('.submit').hide();
+
+    // Show Next Button on Input field is filled
+    $('#Email').keypress(function(){
+      if($(this) == " "){
+        $('.emailbtn').hide();
+      }else{
+        $('.emailbtn').show();
+      }
+    });
+
+    $('#name').keypress(function(){
+      if($(this) == " "){
+        $('.namebtn').hide();
+      }else{
+        $('.namebtn').show();
+      }
+    });
+
+    $('#cell').keypress(function(){
+      if($(this) == " "){
+        $('.submit').hide();
+      }else{
+        $('.submit').show();
+      }
+    });
+
+
+    $('.start').click(function(){
+        $('.first-field').hide();
+        $('.second-field').show();
+    });
+
+    $('.emailbtn').click(function(){
+        $('.second-field').hide();
+        $('.third-field').show();
+    });
+
+    $('.namebtn').click(function(){
+        $('.third-field').hide();
+        $('.final-field').show();
+    })
+})
 
 $("#form").submit(function(e) {
 
