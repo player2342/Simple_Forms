@@ -208,14 +208,14 @@ body {
 <div class="container">
 <div class="row h-100" >
     <div class="col-md-6 col-md-offset-3 my-auto">
-        <form id="msform" method="POST">
+        <div id="msform">
             <!-- fieldsets -->
             <!-- first form -->
             <fieldset>
               <label class="float-right">What is your email? *</label>
                 <input type="email" name="email" placeholder="name@example.com"/>
 
-                <input type="button" name="next" class="next action-button" value="Ok"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <!-- second form -->
             <fieldset>
@@ -224,18 +224,18 @@ body {
                 <input type="text" name="name" placeholder="enter your name"/>
 
 
-                <input type="button" type="submit" name="next" class="next action-button" value="Ok"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
             </fieldset>
             <!-- third form -->
             <fieldset>
 
                <label>Where do you live? *</label>
-                <input type="text" type="submit" name="address" placeholder="Enter your email"/>
+                <input type="text" name="address" placeholder="Enter your address"/>
 
 
-                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                <input type="button" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
-        </form>
+        </div>
 
 
     </div>
@@ -251,48 +251,127 @@ body {
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
+$("input[name='email']").keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    
+    console.log("if")
+    $(".next").trigger("click");   
+  }
+});
+$("input[name='name']").keypress(function (e) {
+ var key = e.which;
+ if(key == 13)  // the enter key code
+  {
+    
+    console.log("if2")
+    // $(".next").trigger("click");
+    if(animating) return false;
+    animating = true;
 
-$(".next").click(function(e){
-    e.preventDefault();
-	if(animating) return false;
-	animating = true;
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
 
-	current_fs = $(this).parent();
-	next_fs = $(this).parent().next();
+    //activate next step on progressbar using the index of next_fs
+    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-
-	//show the next fieldset
-	next_fs.show();
-	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
-		step: function(now, mx) {
-			//as the opacity of current_fs reduces to 0 - stored in "now"
-			//1. scale current_fs down to 80%
-			scale = 1 - (1 - now) * 0.2;
-			//2. bring next_fs from the right(50%)
-			left = (now * 100)+"%";
-			//3. increase opacity of next_fs to 1 as it moves in
-			opacity = 1 - now;
-			current_fs.css({
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+        step: function(now, mx) {
+            //as the opacity of current_fs reduces to 0 - stored in "now"
+            //1. scale current_fs down to 80%
+            scale = 1 - (1 - now) * 0.2;
+            //2. bring next_fs from the right(50%)
+            left = (now * 100)+"%";
+            //3. increase opacity of next_fs to 1 as it moves in
+            opacity = 1 - now;
+            current_fs.css({
         'transform': 'scale('+scale+')',
         'position': 'absolute'
       });
-			next_fs.css({'left': left, 'opacity': opacity});
-		},
-		duration: 800,
-		complete: function(){
-			current_fs.hide();
-			animating = false;
-		},
-		//this comes from the custom easing plugin
-		easing: 'easeInOutBack'
-	});
+            next_fs.css({'left': left, 'opacity': opacity});
+        },
+        duration: 800,
+        complete: function(){
+            current_fs.hide();
+            animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+    });   
+  }
 });
 
+$("input[name='address']").keypress(function(e){
+    var key = e.which;
+    if(key == 13){
+            e.preventDefault(); // avoid to execute the actual submit of the form.
 
-$("#msform").submit(function(e) {
+var form = $(this);
+var url = "https://verceltest-six.vercel.app/api" // url of the Flask API
+
+$.ajax({
+       type: "POST",
+       url: url,
+       data: form.serialize(), // serializes the form's elements.
+       success: function(data)
+       {
+           console.log("API response", data); // show response from the flask API.
+           $('#form').trigger("reset");
+           alert("Data sent with success !")
+       },
+       error: function(err)
+       {
+           console.log("API response", err); // show error from the flask API.
+           alert("API error, please try again !")
+       }
+     });
+
+    }
+});
+    $(".next").click(function(){
+    if(animating) return false;
+    animating = true;
+
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
+
+    //activate next step on progressbar using the index of next_fs
+    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({opacity: 0}, {
+        step: function(now, mx) {
+            //as the opacity of current_fs reduces to 0 - stored in "now"
+            //1. scale current_fs down to 80%
+            scale = 1 - (1 - now) * 0.2;
+            //2. bring next_fs from the right(50%)
+            left = (now * 100)+"%";
+            //3. increase opacity of next_fs to 1 as it moves in
+            opacity = 1 - now;
+            current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+            next_fs.css({'left': left, 'opacity': opacity});
+        },
+        duration: 800,
+        complete: function(){
+            current_fs.hide();
+            animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+    });
+});
+
+$(".submit").click(function(e) {
+
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
 var form = $(this);
