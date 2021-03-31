@@ -6,292 +6,293 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <style>
-    @import url(https://fonts.googleapis.com/css?family=Montserrat);
-    /*/basic reset/*/
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    html {
-        height: 100%;
-        background: rgb(249, 205, 72); /* fallback for old browsers */
-        background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
-    }
-    body {
-        font-family: montserrat, arial, verdana;
-        background: transparent;
-    }
-    input[type=text] {
+    <style>
+        /*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-      color: white;
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px -12px; /*https://teamtreehouse.com/community/how-to-remove-space-between-submit-and-input-field*/
-      box-sizing: border-box;
-      text-justify: inherit;
-      /*border: 2px solid #f7d84e;
-      border-radius: 4px;*/
-      background-color: #ffffff;
-      color: #8d8c8c;
-    }
-    input[type=text]:focus {
-      background-color: lightblue;
-    }
-    input[type=button], input[type=submit], input[type=reset] {
-      background-color: #f7d84e;
-      color: white;
-      padding: 4px 52px;
-      text-decoration: none;
-      margin: 4px 2px;
-      cursor: pointer;
-      border: 10px solid #f7d84e;
-      border-radius: 4px;
-
-    }
-
-    html, body, .viewport {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: 'Thasadith', sans-serif;
-      font-size: 25px;
-    }
-    h1{
-      text-shadow: -4px 4px 10px #5a5a5a;
-    }
-    .flex-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
-    .box {
-      padding: 8px 10% 0px 10%;
-      font-size: 25px;
-      color: #8d8c8c;
-      /*border: 10px solid #f7d84e; */
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
-    .first-text{
-        margin-bottom: 16px;
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 0px;
-    max-width: 100%;
-    font-weight: unset;
-    font-size: 24px;
-    line-height: 32px;
-    color: rgb(4, 4, 4);
-    text-shadow: none
-    }
-    .first-field{
-        width: 75%;
-        margin: 0% auto;
-    }
-    .icon__Boundary svg {
-     /*display: block; */
-    fill: rgb(228, 228, 228);
-    transition: fill 0.2s ease 0s;
-    }
-    button{
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+    background: rgb(249, 205, 72); /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #6441A5, #2a0845); /* Chrome 10-25, Safari 5.1-6 */
+}
+body {
+    font-family: montserrat, arial, verdana;
+    background: transparent;
+}
+/*form styles*/
+#msform {
+    text-align: center;
     position: relative;
-    font-family: inherit;
-    font-weight: 700;
+    margin-top: 25%;
+}
+#msform fieldset {
+    background:transparent;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 0 10%;
+    /*stacking fieldsets above each other*/
+    position: relative;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+/*inputs*/
+#msform input, #msform textarea {
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 13px;
+}
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #ee0979;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #ee0979;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
     cursor: pointer;
-    transition-duration: 0.1s;
-    transition-property: background-color, color, border-color, opacity, box-shadow;
-    transition-timing-function: ease-out;
-    outline: none;
-    border: 1px solid transparent;
-    margin: 0px;
-    box-shadow: rgb(0 0 0 / 10%) 0px 3px 12px 0px;
-    padding: 8px 18px;
-    min-height: 48px;
-    background-color: rgb(37, 37, 37);
-    color: rgb(228, 228, 228);
-    border-radius: 4px;
-    }
-    label{
-        color: black;
-    font-size: 27px;
-    font-family: inherit;
-    text-align: left;
-    margin-bottom: 24px !important;
-    margin: -15px;
-    max-width: 100%;
-    font-weight: unset;
-    font-size: 24px;
-    line-height: 32px;
-    /*left: 11%;
-    /*position: absolute;*/
-    }
-    input{
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+}
+#msform .action-button-previous {
+    width: 100px;
+    background: #C5C5F1;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #C5C5F1;
+}
+/*headings*/
+.fs-title {
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /*CSS counters to number the steps*/
+    counter-reset: step;
+}
+#progressbar li {
+    list-style-type: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 33.33%;
+    float: left;
+    position: relative;
+    letter-spacing: 1px;
+}
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #ee0979;
+    color: white;
+}
+ input[type=text] ,input[type=email]{
         /*position: relative;*/
         /*left: -79%;*/
-        margin: 27px;
-        display: block;
-    width: 100%;
-    font-family: inherit;
-    color: rgb(0, 0, 0);
-    padding: 0px 0px 8px;
-    border: none;
-    outline: none;
-    border-radius: 0px;
-    appearance: none;
-    background-image: none;
-    background-position: initial;
-    background-size: initial;
-    background-repeat: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    transform: translateZ(0px);
-    font-size: 30px;
-    -webkit-font-smoothing: antialiased;
-    line-height: unset;
-    -webkit-text-fill-color: black;
-    animation: 1ms ease 0s 1 normal none running native-autofill-in;
-    transition: background-color 1e+08s ease 0s, box-shadow 0.1s ease-out 0s;
-    box-shadow: rgb(0 0 0 / 30%) 0px 1px;
+        margin: 27px !important;
+        display: block !important;
+    width: 100% !important;
+    font-family: inherit !important;
+    color: rgb(0, 0, 0) !important;
+    padding: 0px 0px 8px !important;
+    border: none !important;
+    outline: none !important;
+    border-radius: 0px !important;
+    appearance: none !important;
+    background-image: none !important;
+    background-position: initial !important;
+    background-size: initial !important;
+    background-repeat: initial !important;
+    background-attachment: initial !important;
+    background-origin: initial !important;
+    background-clip: initial !important;
+    transform: translateZ(0px) !important;
+    font-size: 30px !important;
+    -webkit-font-smoothing: antialiased !important;
+    line-height: unset !important;
+    -webkit-text-fill-color: black !important;
+    animation: 1ms ease 0s 1 normal none running native-autofill-in !important;
+    transition: background-color 1e+08s ease 0s, box-shadow 0.1s ease-out 0s !important;
+    box-shadow: rgb(0 0 0 / 30%) 0px 1px !important;
     background-color: transparent !important;
     }
-    input:focus{
-        box-shadow: rgb(0 0 0) 0px 2px;
+    label {
+    display: flex;
+    margin-bottom: 5px;
+    font-weight: 700;
+    left: 13%;
+    position: absolute;
     }
-  </style>
+    input[type=text],input[type=email]:focus{
+        box-shadow: rgb(0 0 0) 0px 2px !important;
+    }
+ </style>
 </head>
 <body>
+<!-- MultiStep Form -->
+<div class="container">
+<div class="row h-100" >
+    <div class="col-md-6 col-md-offset-3 my-auto">
+        <form id="msform" method="POST">
+            <!-- fieldsets -->
+            <!-- first form -->
+            <fieldset>
+              <label class="float-right">What is your email? *</label>
+                <input type="email" name="email" placeholder="name@example.com"/>
 
-  <div class="flex-box">
-    <div class="box">
-      <div>
-      <form id="form">
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <!-- second form -->
+            <fieldset>
 
-        <fieldset class="second-field animate__animated animate__fadeInDown animate__fast">
-            <label><span>1 <span aria-hidden="true" class="icon__Boundary-sc-2r3yc0-0 bJDuDL"><svg height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg></span></span> What is your Email ?</label><br>
-            <input type="text" id="Email" name="Email" placeholder="Email" required="true">
-            <br>
-            <button type="button" class="startbtn emailbtn">
-                <span class="button_FlexWrapper">
-                    <span class="button__ButtonWrapper">
-                        <span class="text__TextWrapper">OK</span>
-                    </span>
-                    <span class="spacer__Spacer">
-                        <span class="button__IconWrapper">
-                            <span class="icon__Boundary">
-                                <svg  height="13" width="16">
-                                    <path d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"></path>
-                                </svg>
-                            </span>
-                        </span>
-                    </span>
-                </span>
-            </button>
+               <label>What is your name? *</label>
+                <input type="text" name="name" placeholder="enter your name"/>
 
-        </fieldset>
-        <fieldset class="third-field animate__animated animate__fadeInDown animate__fast">
-            <label><span>2 <span aria-hidden="true" class="icon__Boundary-sc-2r3yc0-0 bJDuDL"><svg height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg></span></span> What is your name?*</label><br>
-            <input type="text" id="name" name="Name" placeholder="Name" required="true">
-            <br>
-            <button type="button" class="startbtn namebtn">
-                <span class="button_FlexWrapper">
-                    <span class="button__ButtonWrapper">
-                        <span class="text__TextWrapper">OK</span>
-                    </span>
-                    <span class="spacer__Spacer">
-                        <span class="button__IconWrapper">
-                            <span class="icon__Boundary">
-                                <svg  height="13" width="16">
-                                    <path d="M14.293.293l1.414 1.414L5 12.414.293 7.707l1.414-1.414L5 9.586z"></path>
-                                </svg>
-                            </span>
-                        </span>
-                    </span>
-                </span>
-            </button>
-        </fieldset>
-        <fieldset class="final-field animate__animated animate__fadeInDown animate__fast">
-            <label><span>3 <span aria-hidden="true" class="icon__Boundary-sc-2r3yc0-0 bJDuDL"><svg height="10" width="11"><path d="M7.586 5L4.293 1.707 5.707.293 10.414 5 5.707 9.707 4.293 8.293z"></path><path d="M8 4v2H0V4z"></path></svg></span></span> Where do you live ?</label><br>
-            <input type="text" id="cell" name="Cell" placeholder="Cell" required="true">
-        </fieldset>
-        <br>
-            <button type="Submit" class="startbtn submit">
-                <span class="button_FlexWrapper">
-                    <span class="button__ButtonWrapper">
-                        <span class="text__TextWrapper">Submit</span>
-                    </span>
-                </span>
-            </button>
-      </form>
-      </div>
+
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+            <!-- third form -->
+            <fieldset>
+
+               <label>Where do you live? *</label>
+                <input type="text" name="address" placeholder="Enter your email"/>
+
+
+                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+            </fieldset>
+        </form>
+
+
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</div>
+</div>
+<!-- /.MultiStep Form -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script>
 
-$(document).ready(function(){
- 
-    $('.third-field').hide();
-    $('.final-field').hide();
-    $('.emailbtn').hide();
-    $('.namebtn').hide();
-    $('.submit').hide();
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
 
-    // Show Next Button on Input field is filled
-    $('#Email').keypress(function(){
-      if($(this) == " "){
-        $('.emailbtn').hide();
-      }else{
-        $('.emailbtn').show();
-      }
-    });
+$(".next").click(function(){
+	if(animating) return false;
+	animating = true;
 
-    $('#name').keypress(function(){
-      if($(this) == " "){
-        $('.namebtn').hide();
-      }else{
-        $('.namebtn').show();
-      }
-    });
+	current_fs = $(this).parent();
+	next_fs = $(this).parent().next();
 
-    $('#cell').keypress(function(){
-      if($(this) == " "){
-        $('.submit').hide();
-      }else{
-        $('.submit').show();
-      }
-    });
+	//activate next step on progressbar using the index of next_fs
+	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+	//show the next fieldset
+	next_fs.show();
+	//hide the current fieldset with style
+	current_fs.animate({opacity: 0}, {
+		step: function(now, mx) {
+			//as the opacity of current_fs reduces to 0 - stored in "now"
+			//1. scale current_fs down to 80%
+			scale = 1 - (1 - now) * 0.2;
+			//2. bring next_fs from the right(50%)
+			left = (now * 100)+"%";
+			//3. increase opacity of next_fs to 1 as it moves in
+			opacity = 1 - now;
+			current_fs.css({
+        'transform': 'scale('+scale+')',
+        'position': 'absolute'
+      });
+			next_fs.css({'left': left, 'opacity': opacity});
+		},
+		duration: 800,
+		complete: function(){
+			current_fs.hide();
+			animating = false;
+		},
+		//this comes from the custom easing plugin
+		easing: 'easeInOutBack'
+	});
+});
 
 
-    $('.start').click(function(){
-        $('.first-field').hide();
-        $('.second-field').show();
-    });
-
-    $('.emailbtn').click(function(){
-        $('.second-field').hide();
-        $('.third-field').show();
-    });
-
-    $('.namebtn').click(function(){
-        $('.third-field').hide();
-        $('.final-field').show();
-    })
-})
-
-$("#form").submit(function(e) {
-
-e.preventDefault(); // avoid to execute the actual submit of the form.
+$("#msform").submit(function(e) {
+    e.preventDefault(); // avoid to execute the actual submit of the form.
 
 var form = $(this);
 var url = "https://verceltest-six.vercel.app/api" // url of the Flask API
@@ -314,6 +315,7 @@ $.ajax({
      });
 
 });
-</script>
+
+  </script>
 </body>
 </html>
