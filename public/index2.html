@@ -215,7 +215,7 @@ body {
               <label class="float-right">What is your email? *</label>
                 <input type="email" name="email" placeholder="name@example.com"/>
 
-                <input type="button" name="next" class="next action-button" value="Next"/>
+                <input type="button" name="next" class="next action-button" value="Ok"/>
             </fieldset>
             <!-- second form -->
             <fieldset>
@@ -224,13 +224,13 @@ body {
                 <input type="text" name="name" placeholder="enter your name"/>
 
 
-                <input type="button" name="next" class="next action-button" value="Next"/>
+                <input type="button" type="submit" name="next" class="next action-button" value="Ok"/>
             </fieldset>
             <!-- third form -->
             <fieldset>
 
                <label>Where do you live? *</label>
-                <input type="text" name="address" placeholder="Enter your email"/>
+                <input type="text" type="submit" name="address" placeholder="Enter your email"/>
 
 
                 <input type="submit" name="submit" class="submit action-button" value="Submit"/>
@@ -252,7 +252,8 @@ var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
-$(".next").click(function(){
+$(".next").click(function(e){
+    e.preventDefault();
 	if(animating) return false;
 	animating = true;
 
