@@ -77,6 +77,23 @@ body {
     cursor: pointer;
     padding: 10px 5px;
     margin: 10px 5px;
+    position: relative;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition-duration: 0.1s;
+    transition-property: background-color, color, border-color, opacity, box-shadow;
+    transition-timing-function: ease-out;
+    outline: none;
+    border: 1px solid transparent;
+    margin: 0px;
+    box-shadow: rgb(0 0 0 / 10%) 0px 3px 12px 0px;
+    padding: 8px 18px;
+    min-height: 48px;
+    background-color: rgb(37, 37, 37);
+    color: rgb(228, 228, 228);
+    border-radius: 4px;
+    left: -30%;
 }
 #msform .action-button:hover, #msform .action-button:focus {
     box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
@@ -201,6 +218,7 @@ body {
     input[type=text],input[type=email]:focus{
         box-shadow: rgb(0 0 0) 0px 2px !important;
     }
+
  </style>
 </head>
 <body>
@@ -215,7 +233,7 @@ body {
               <label class="float-right">What is your email? *</label>
                 <input type="email" name="email" placeholder="name@example.com"/>
 
-                <input type="button" name="next" class="next action-button" value="Next"/>
+                <input type="button" name="next" class="next action-button" value="Ok"/>
             </fieldset>
             <!-- second form -->
             <fieldset>
@@ -224,7 +242,7 @@ body {
                 <input type="text" name="name" placeholder="enter your name"/>
 
 
-                <input type="button" name="next" class="next action-button" value="Next"/>
+                <input type="button" name="next" class="next action-button" value="Ok"/>
             </fieldset>
             <!-- third form -->
             <fieldset>
