@@ -8,15 +8,30 @@ inputContainers.forEach(item => {
     input.addEventListener('keyup', event => {
         if (event.keyCode === 13 && event.target.value != '' && event.target.value != ' ' && event.target.value != null) {
             anime({
+                targets: item,
+                translateX: -2500,
+                duration: 500,
+                delay: 0,
+                easing: 'linear',
+                complete: function() {
+                    anime({
+                        targets: item,
+                        translateX: 0,
+                        duration: 500,
+                        easing: 'linear',
+                    })
+                },
+            })
+            anime({
                 targets: form,
                 translateY: function() {
                     formTranslateY -= (+33);
                     return formTranslateY + '%';
                 },
+                delay: 500,
                 duration: 500,
                 easing: 'easeInOutBack',
                 complete: function () {
-                    console.log(formTranslateY);
                     if (formTranslateY < -90) {
                         document.querySelector('.congrats').style.display = 'flex'
                     }
