@@ -76,7 +76,7 @@
         <input type="text" id="Email" name="Email" placeholder="Email">
         <input type="text" id="name" name="Name" placeholder="Name">
         <input type="text" id="cell" name="Cell" placeholder="Cell">
-        <input type="text" id="Refer" name="Refer" placeholder="TestForm">
+        <input type="hidden" id="Refer" name="Refer" value="simpleform">
         <input type="submit" value="Submit">
       </form>
       </div>
@@ -89,7 +89,7 @@ $("#form").submit(function(e) {
 e.preventDefault(); // avoid to execute the actual submit of the form.
 
 var form = $(this);
-var url = "https://verceltest-six.vercel.app/api" // url of the Flask API
+var url = "https://post-to-airtable.vercel.app/api" // url of the Flask API
 
 $.ajax({
        type: "POST",
