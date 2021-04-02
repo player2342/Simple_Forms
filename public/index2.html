@@ -64,7 +64,7 @@ body {
     -moz-box-shadow: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    border: 1px solid #ee0979;
+    border: 1px solid;
     outline-width: 0;
     transition: All 0.5s ease-in;
     -webkit-transition: All 0.5s ease-in;
@@ -74,7 +74,7 @@ body {
 /*buttons*/
 #msform .action-button {
     width: 70px;
-    background: #ee0979;
+    background: black;
     font-weight: bold;
     color: white;
     border: 0 none;
@@ -173,7 +173,7 @@ body {
             <!-- first form -->
             <fieldset>
               <label class="float-right">What is your email? *</label>
-                <input type="email" name="email" placeholder="name@example.com"/>
+                <input type="email" name="Email" placeholder="name@example.com"/>
 
                 <input type="button" name="next" class="next action-button" value="Ok"/>
             </fieldset>
@@ -181,7 +181,7 @@ body {
             <fieldset>
 
                <label>What is your name? *</label>
-                <input type="text" name="name" placeholder="enter your name"/>
+                <input type="text" name="Name" placeholder="enter your name"/>
 
 
                 <input type="button" name="next" class="next action-button" value="Ok"/>
@@ -190,11 +190,12 @@ body {
             <fieldset>
 
                <label>Where do you live? *</label>
-                <input type="text" name="address" placeholder="Enter your email"/>
+                <input type="text" name="Cell" placeholder="Enter your email"/>
 
 
                 <input type="button" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
+            <input type="hidden" id="Refer" name="Refer" value="simpleform">
         </div>
 
 
@@ -270,13 +271,22 @@ $("input[name='address']").keypress(function(e){
     if(key == 13){
             e.preventDefault(); // avoid to execute the actual submit of the form.
 
-var form = $(this);
-var url = "https://verceltest-six.vercel.app/api" // url of the Flask API
+var form = {
+    Name:$('input[name="Name"]').val(),
+    Email: $('input[name="Email"]').val(),
+    Address:$('input[name="Cell"]').val(),
+    Refer:$('input[name="Refer"]').val()
+};
+// form = []
+console.log(form);
+var url = "http://verceltest-six.vercel.app/api" // url of the Flask API
 
 $.ajax({
        type: "POST",
        url: url,
-       data: form.serialize(), // serializes the form's elements.
+       data: form,
+       dataType:"json",
+       encode:"true",
        success: function(data)
        {
            console.log("API response", data); // show response from the flask API.
@@ -334,13 +344,19 @@ $(".submit").click(function(e) {
 
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
-var form = $(this);
+var form = {
+    name:$('input[name="name"]').val(),
+    email: $('input[name="email"]').val(),
+    address:$('input[name="address"]').val()
+};
 var url = "https://verceltest-six.vercel.app/api" // url of the Flask API
 
 $.ajax({
        type: "POST",
        url: url,
-       data: form.serialize(), // serializes the form's elements.
+       data: form,
+       dataType:'json',
+       encode:true,
        success: function(data)
        {
            console.log("API response", data); // show response from the flask API.

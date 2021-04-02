@@ -91,6 +91,7 @@ e.preventDefault(); // avoid to execute the actual submit of the form.
 var form = $(this);
 var url = "https://post-to-airtable.vercel.app/api" // url of the Flask API
 
+console.log(form);
 $.ajax({
        type: "POST",
        url: url,
