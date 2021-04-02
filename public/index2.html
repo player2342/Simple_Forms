@@ -23,6 +23,7 @@ html {
 body {
     font-family: montserrat, arial, verdana;
     background: transparent;
+    overflow: hidden;
 }
 /*form styles*/
 #msform {
@@ -38,6 +39,10 @@ body {
     margin: 0 10%;
     /*stacking fieldsets above each other*/
     position: relative;
+    max-width: 1000px;
+    min-width: 794px;
+    /*margin: 38% auto;*/
+    height: 30rem;
 }
 /*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
@@ -93,7 +98,7 @@ body {
     background-color: rgb(37, 37, 37);
     color: rgb(228, 228, 228);
     border-radius: 4px;
-    left: -35%;
+    left: -41.4%;
 }
 
 
@@ -147,8 +152,10 @@ body {
     display: flex;
     margin-bottom: 5px;
     font-weight: 700;
-    left: 13%;
+    left: 7%;
     position: absolute;
+    font-size: 15px;
+    top: 3%;
     }
     input[type=text],input[type=email]:focus{
         box-shadow: rgb(0 0 0) 0px 2px !important;
