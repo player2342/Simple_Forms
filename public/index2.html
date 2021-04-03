@@ -273,34 +273,6 @@ $("input[name='address']").keypress(function(e){
     if(key == 13){
             e.preventDefault(); // avoid to execute the actual submit of the form.
 
-var form = {
-    Name:$('input[name="Name"]').val(),
-    Email: $('input[name="Email"]').val(),
-    Address:$('input[name="Cell"]').val(),
-    Refer:$('input[name="Refer"]').val()
-};
-// form = []
-console.log(form);
-var url = "http://verceltest-six.vercel.app/api" // url of the Flask API
-
-$.ajax({
-       type: "POST",
-       url: url,
-       data: form,
-       dataType:"json",
-       encode:"true",
-       success: function(data)
-       {
-           console.log("API response", data); // show response from the flask API.
-           $('#form').trigger("reset");
-           alert("Data sent with success !")
-       },
-       error: function(err)
-       {
-           console.log("API response", err); // show error from the flask API.
-           alert("API error, please try again !")
-       }
-     });
 
     }
 });
@@ -347,10 +319,13 @@ $(".submit").click(function(e) {
     e.preventDefault(); // avoid to execute the actual submit of the form.
 
 var form = {
-    name:$('input[name="name"]').val(),
-    email: $('input[name="email"]').val(),
-    address:$('input[name="address"]').val()
+    Name:$('input[name="Name"]').val(),
+    Email: $('input[name="Email"]').val(),
+    Cell:$('input[name="Cell"]').val(),
+    Refer:$('input[name="Refer"]').val()
 };
+
+console.log(form);
 var url = "https://verceltest-six.vercel.app/api" // url of the Flask API
 
 $.ajax({
