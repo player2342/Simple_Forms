@@ -339,7 +339,7 @@ var form = {
     Refer:$('input[name="Refer"]').val()
 };
 
-console.log(form);
+// console.log(form);
 var url = "https://post-to-airtable.vercel.app/api" // url of the Flask API
 
 $.ajax({
@@ -354,7 +354,7 @@ $.ajax({
            $('#form').trigger("reset");
            alert("Data sent with success !");
            $('h1').show();
-     window.location().reload();
+           window.location().reload();
        },
        error: function(err)
        {
