@@ -42,7 +42,7 @@ body {
     position: relative;
     max-width: 1000px;
     min-width: 794px;
-    /margin: 38% auto;/
+    /* /margin: 38% auto;/ */
     height: 30rem;
 }
 /* /Hide all except first fieldset/ */
@@ -168,6 +168,7 @@ body {
 <body>
 <!-- MultiStep Form -->
 <div class="container">
+    
 <div class="row h-100" >
     <div class="col-md-6 col-md-offset-1 my-auto">
         <div id="msform">
@@ -193,8 +194,10 @@ body {
                 <input type="text" name="Cell" placeholder="Number"/>
                 <input type="hidden" id="Refer" name="Refer" value="simpleform">
                 <input type="button" name="submit" class="submit action-button" value="Submit"/>
-            </fieldset>
-            
+
+             
+                
+         <h1>Thank you</h1>
         </div>
 
 
@@ -207,6 +210,7 @@ body {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script>
 $(document).ready(function(){
+    $('h1').hide();
         $('input[name="Email"]').focus();
 });
 //jQuery time
@@ -278,34 +282,10 @@ $("input[name='Cell']").keypress(function(e){
     var key = e.which;
     if(key == 13){
             e.preventDefault(); // avoid to execute the actual submit of the form.
-        var form = {
-    Name:$('input[name="Name"]').val(),
-    Email: $('input[name="Email"]').val(),
-    Cell:$('input[name="Cell"]').val(),
-    Refer:$('input[name="Refer"]').val()
-};
+       
 
-console.log(form);
-var url = "https://post-to-airtable.vercel.app/api" // url of the Flask API
 
-$.ajax({
-       type: "POST",
-       url: url,
-       data: form,
-       dataType:'json',
-       encode:true,
-       success: function(data)
-       {
-           console.log("API response", data); // show response from the flask API.
-           $('#form').trigger("reset");
-           alert("Data sent with success !")
-       },
-       error: function(err)
-       {
-           console.log("API response", err); // show error from the flask API.
-           alert("API error, please try again !")
-       }
-     });
+
 
     }
 });
@@ -372,14 +352,19 @@ $.ajax({
        {
            console.log("API response", data); // show response from the flask API.
            $('#form').trigger("reset");
-           alert("Data sent with success !")
+           alert("Data sent with success !");
+           $('h1').show();
+     windows.location().reload();
        },
        error: function(err)
        {
            console.log("API response", err); // show error from the flask API.
            alert("API error, please try again !")
        }
+       
      });
+
+   
 
 });
 
