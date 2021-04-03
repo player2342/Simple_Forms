@@ -183,21 +183,18 @@ body {
             <fieldset>
 
                <label>What is your name? *</label>
-                <input type="text" name="Name" placeholder="enter your name"/>
-
-
+                <input type="text" name="Name" id="Name" placeholder="Your name here"/>
                 <input type="button" name="next" class="next action-button" value="Ok"/>
             </fieldset>
             <!-- third form -->
             <fieldset>
 
                <label>Cell Number? *</label>
-                <input type="text" name="Cell" placeholder="Enter your email"/>
-
-
+                <input type="text" name="Cell" placeholder="555.555.1212"/>
+                <input type="hidden" id="Refer" name="Refer" value="simpleform">
                 <input type="button" name="submit" class="submit action-button" value="Submit"/>
             </fieldset>
-            <input type="hidden" id="Refer" name="Refer" value="simpleform">
+            
         </div>
 
 
@@ -326,7 +323,7 @@ var form = {
 };
 
 console.log(form);
-var url = "https://verceltest-six.vercel.app/api" // url of the Flask API
+var url = "https://post-to-airtable.vercel.app/api" // url of the Flask API
 
 $.ajax({
        type: "POST",
